@@ -1,5 +1,9 @@
 package org.adligo.tests4j_4gwt.client.ui;
 
+import java.util.List;
+
+import org.adligo.tests4j_4gwt.client.model.I_GwtTrialWrapper;
+
 public interface I_TrialRunUi {
 	
 	public void clearResults();
@@ -17,4 +21,5 @@ public interface I_TrialRunUi {
 	public void setRunHandler(I_RunHandler handler);
 
 	public void resize();
+
 }
