@@ -1,5 +1,6 @@
 package org.adligo.tests4j_4gwt.client.view;
 
+import org.adligo.tests4j_4gwt.client.ui.I_ConsoleUi;
 import org.adligo.tests4j_4gwt.client.ui.I_RunHandler;
 import org.adligo.tests4j_4gwt.client.ui.I_TrialRunUi;
 
@@ -17,6 +18,7 @@ import com.google.gwt.user.client.ui.TextArea;
 
 public class TrialRunView extends Composite implements I_TrialRunUi {
 	private static final AppConstants CONSTANTS = GWT.create(AppConstants.class);
+	private VerticalPanel verticalPanel;
 	private SummaryPanel summaryPanel;
 	private ConsolePanel consolePanel;
 	private ResultsTreePanel resultsPanel;
@@ -25,7 +27,7 @@ public class TrialRunView extends Composite implements I_TrialRunUi {
 	private TextArea textArea;
 	
 	public TrialRunView() {
-		VerticalPanel verticalPanel = new VerticalPanel();
+		verticalPanel = new VerticalPanel();
 		initWidget(verticalPanel);
 		
 		Window.addResizeHandler(new ResizeHandler() {
@@ -40,10 +42,11 @@ public class TrialRunView extends Composite implements I_TrialRunUi {
 		summaryPanel = new SummaryPanel();
 		summaryPanel.setSize("100%", "100px");
 		verticalPanel.add(summaryPanel);
+		verticalPanel.setCellHorizontalAlignment(summaryPanel, HasHorizontalAlignment.ALIGN_CENTER);
 		
 		tabPanel = new TabPanel();
 		verticalPanel.add(tabPanel);
-		verticalPanel.setCellHorizontalAlignment(tabPanel, HasHorizontalAlignment.ALIGN_CENTER);
+		verticalPanel.setCellHorizontalAlignment(tabPanel, HasHorizontalAlignment.ALIGN_LEFT);
 		verticalPanel.setCellHeight(tabPanel, CONSTANTS.tabPanel_height());
 		verticalPanel.setCellWidth(tabPanel, "100%");
 		tabPanel.setSize("100%", "300px");
@@ -74,20 +77,18 @@ public class TrialRunView extends Composite implements I_TrialRunUi {
 
 	@Override
 	public void clearResults() {
-		// TODO Auto-generated method stub
-		
+		resultsPanel.clear();
 	}
 
 	@Override
 	public void addTrial(String trial) {
-		// TODO Auto-generated method stub
-		
+		resultsPanel.addTrial(trial);
 	}
 
 	@Override
 	public void addTest(String trial, String test, boolean passed) {
-		// TODO Auto-generated method stub
-		
+		resultsPanel.addTest(trial, test, passed);
+		summaryPanel.addProgress(passed);
 	}
 
 	@Override
@@ -103,12 +104,6 @@ public class TrialRunView extends Composite implements I_TrialRunUi {
 	}
 
 	@Override
-	public void addProgress(double pct, boolean passed) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
 	public void setRunHandler(I_RunHandler handler) {
 		summaryPanel.setRunHandler(handler);
 	}
@@ -116,7 +111,24 @@ public class TrialRunView extends Composite implements I_TrialRunUi {
 
 	@Override
 	public void resize() {
+		int width = Window.getClientWidth();
+		int thisWidth = verticalPanel.getOffsetWidth();
+		if (thisWidth > width || width - 100 > thisWidth) {
+			int newWidth = width -40;
+			String newWidthString = "" + newWidth + "px";
+			verticalPanel.setWidth(newWidthString);
+			tabPanel.setWidth(newWidthString);
+			consolePanel.setWidth(newWidthString);
+			resultsPanel.setWidth(newWidthString);
+			widgetPanel.setWidth(newWidthString);
+			
+			newWidth = newWidth - 40;
+			newWidthString = "" + newWidth + "px";
+			summaryPanel.setWidth(newWidthString);
+			summaryPanel.resize(newWidth, null);
+		}
 		int height = Window.getClientHeight();
+		
 		summaryPanel.setHeight("100px");
 		int left = height - 100;
 		if (left <= 300) {
@@ -133,5 +145,18 @@ public class TrialRunView extends Composite implements I_TrialRunUi {
 		}
 		tabPanel.selectTab(0);
 		
+	}
+	
+	public void setTotalTests(int p) {
+		summaryPanel.setTotal(p);
+	}
+
+	@Override
+	public I_ConsoleUi getConsole() {
+		return consolePanel;
+	}
+	
+	public int getLineBufferSetting() {
+		return summaryPanel.getLineBufferSetting();
 	}
 }

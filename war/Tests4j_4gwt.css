@@ -37,10 +37,17 @@ h1 {
 	color: crimson;
 	background-color: crimson;
 }
+.redText {
+	color: crimson;
+}
 .green {
 	color: olivedrab;
 	background-color: olivedrab;
 }
+.greenText {
+	color: olivedrab;
+}
+
 .gwt-DecoratorPanel {
 	padding: 3px;
 }

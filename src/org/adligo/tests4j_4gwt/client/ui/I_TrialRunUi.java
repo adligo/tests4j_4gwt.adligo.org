@@ -1,8 +1,5 @@
 package org.adligo.tests4j_4gwt.client.ui;
 
-import java.util.List;
-
-import org.adligo.tests4j_4gwt.client.model.I_GwtTrialWrapper;
 
 public interface I_TrialRunUi {
 	
@@ -16,10 +13,13 @@ public interface I_TrialRunUi {
 	
 	public void showTestWidget(Object o);
 	
-	public void addProgress(double pct, boolean passed);
+	public void setTotalTests(int p);
 	
 	public void setRunHandler(I_RunHandler handler);
 
 	public void resize();
 
+	public I_ConsoleUi getConsole();
+	
+	public int getLineBufferSetting();
 }

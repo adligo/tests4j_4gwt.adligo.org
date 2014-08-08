@@ -4,6 +4,7 @@ import org.adligo.tests4j_4gwt.client.ui.I_RunHandler;
 
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.DecoratorPanel;
@@ -14,10 +15,13 @@ import com.google.gwt.user.client.ui.IntegerBox;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.VerticalPanel;
+import com.google.gwt.user.client.ui.HTMLTable.CellFormatter;
 import com.google.gwt.core.client.GWT;
 
 public class SummaryPanel extends Composite {
 	private static final AppConstants CONSTANTS = GWT.create(AppConstants.class);
+	private VerticalPanel verticalPanel;
+	private FlexTable flexTable;
 	private ProgressPanel progressBar;
 	private TextBox intel4jUrlTextBox;
 	private TextBox buildIdTextBox;
@@ -27,7 +31,7 @@ public class SummaryPanel extends Composite {
 	
 	public SummaryPanel() {
 		
-		VerticalPanel verticalPanel = new VerticalPanel();
+		verticalPanel = new VerticalPanel();
 		verticalPanel.setStyleName("lightGrey");
 		initWidget(verticalPanel);
 		verticalPanel.setWidth("100%");
@@ -37,7 +41,7 @@ public class SummaryPanel extends Composite {
 		verticalPanel.add(progressBar);
 		progressBar.setSize("100%", "20");
 		
-		FlexTable flexTable = new FlexTable();
+		flexTable = new FlexTable();
 		verticalPanel.add(flexTable);
 		flexTable.setSize("100%", "40");
 		
@@ -66,12 +70,15 @@ public class SummaryPanel extends Composite {
 		Label consoleLinesBufferLabel = new Label(CONSTANTS.consoleLinesBufferLabel_text());
 		flexTable.setWidget(2, 0, consoleLinesBufferLabel);
 		flexTable.getCellFormatter().setHeight(2, 0, "20px");
-		flexTable.getCellFormatter().setWidth(2, 0, "130");
+		flexTable.getCellFormatter().setWidth(2, 0, "130px");
 		consoleLinesBufferLabel.setWordWrap(false);
 		
 		lineBufferTextBox = new IntegerBox();
 		flexTable.setWidget(2, 1, lineBufferTextBox);
 		lineBufferTextBox.setHeight("20px");
+		flexTable.getCellFormatter().setHeight(2, 1, "20px");
+		flexTable.getCellFormatter().setWidth(2, 1, "130px");
+		lineBufferTextBox.setValue(100);
 		
 		runButton = new Button(CONSTANTS.runButton_html());
 		runButton.addClickHandler(new ClickHandler() {
@@ -84,14 +91,29 @@ public class SummaryPanel extends Composite {
 		flexTable.getFlexCellFormatter().setColSpan(0, 1, 2);
 		flexTable.getCellFormatter().setVerticalAlignment(2, 2, HasVerticalAlignment.ALIGN_MIDDLE);
 		flexTable.getCellFormatter().setHorizontalAlignment(2, 2, HasHorizontalAlignment.ALIGN_CENTER);
-		flexTable.getCellFormatter().setHorizontalAlignment(2, 0, HasHorizontalAlignment.ALIGN_RIGHT);
 		flexTable.getCellFormatter().setHorizontalAlignment(0, 0, HasHorizontalAlignment.ALIGN_RIGHT);
 		flexTable.getCellFormatter().setHorizontalAlignment(1, 0, HasHorizontalAlignment.ALIGN_RIGHT);
+		flexTable.getCellFormatter().setHorizontalAlignment(2, 0, HasHorizontalAlignment.ALIGN_RIGHT);
+		flexTable.getCellFormatter().setWidth(0, 0, "130px");
+		flexTable.getCellFormatter().setWidth(1, 0, "130px");
+		flexTable.getCellFormatter().setWidth(2, 0, "130px");
+		
+		flexTable.getCellFormatter().setHorizontalAlignment(0, 1, HasHorizontalAlignment.ALIGN_LEFT);
+		flexTable.getCellFormatter().setHorizontalAlignment(1, 1, HasHorizontalAlignment.ALIGN_LEFT);
+		flexTable.getCellFormatter().setHorizontalAlignment(2, 1, HasHorizontalAlignment.ALIGN_LEFT);
+		
+		flexTable.getCellFormatter().setHorizontalAlignment(2, 2, HasHorizontalAlignment.ALIGN_LEFT);
+		flexTable.getCellFormatter().setWidth(2, 2, "130px");
+		
 		flexTable.getFlexCellFormatter().setColSpan(1, 1, 2);
 	}
 	
 	public void onRun() {
 		runButton.setEnabled(false);
+		lineBufferTextBox.setEnabled(false);
+		runHandler.run();
+		runButton.setEnabled(true);
+		lineBufferTextBox.setEnabled(true);
 	}
 
 	public I_RunHandler getRunHandler() {
@@ -100,5 +122,50 @@ public class SummaryPanel extends Composite {
 
 	public void setRunHandler(I_RunHandler runHandler) {
 		this.runHandler = runHandler;
+	}
+	
+
+	public void setTotal(int p) {
+		progressBar.setTotal(p);
+	}
+	
+	public void addProgress(boolean p) {
+		progressBar.addProgress(p);
+	}
+	
+	public void resize(Integer width, Integer height) {
+		if (width != null) {
+			int newWidth = width;
+			String newWidthString = "" + newWidth + "px";
+			verticalPanel.setWidth(newWidthString);
+			progressBar.setWidth(newWidthString);
+			flexTable.setWidth(newWidthString);
+			flexTable.getCellFormatter().setWidth(0, 0, newWidthString);
+			float newWidthFloat = newWidth;
+			float newInnerWidthFloat = newWidthFloat * (float) 0.9;
+			int newInnerWidth = Math.round(newInnerWidthFloat) - 130;
+			int newInnerCell = Math.round(newInnerWidthFloat/2) -1;
+			
+			newWidthString = "" + newInnerWidth + "px";
+			intel4jUrlTextBox.setWidth(newWidthString);
+			buildIdTextBox.setWidth(newWidthString);
+			
+			newWidthString = "" + newInnerCell + "px";
+			CellFormatter formatter =  flexTable.getCellFormatter();
+			formatter.setWidth(0,  1, newWidthString);
+			formatter.setWidth(0,  2, newWidthString);
+			formatter.setWidth(1,  1, newWidthString);
+			formatter.setWidth(1,  2, newWidthString);
+		}
+		progressBar.resize(width, height);
+	}
+	
+	public int getLineBufferSetting() {
+		Integer toRet = lineBufferTextBox.getValue();
+		if (toRet != null) {
+			return toRet;
+		}
+		return 100;
+		
 	}
 }
