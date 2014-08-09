@@ -1,6 +1,7 @@
 package org.adligo.tests4j_4gwt.client;
 
 import org.adligo.tests4j_4gwt.client.model.example.ExampleGwtTrialWrapper;
+import org.adligo.tests4j_4gwt.client.model.example.ExampleMetaTrial;
 import org.adligo.tests4j_4gwt.client.model.run.GwtTests4J_Params;
 import org.adligo.tests4j_4gwt.client.view.TrialRunView;
 
@@ -23,6 +24,7 @@ public class Tests4J_EntryPoint implements EntryPoint {
 		Controller controller = new Controller(view);
 		GwtTests4J_Params params = new GwtTests4J_Params();
 		params.addTrial(new ExampleGwtTrialWrapper());
+		params.setMetaTrial(new ExampleMetaTrial());
 		controller.setParams(params);
 	}
 }

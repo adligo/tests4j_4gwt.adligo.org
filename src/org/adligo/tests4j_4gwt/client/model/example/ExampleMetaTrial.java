@@ -1,23 +1,27 @@
 package org.adligo.tests4j_4gwt.client.model.example;
 
+import org.adligo.tests4j.models.shared.common.TrialType;
 import org.adligo.tests4j.models.shared.metadata.I_TrialRunMetadata;
 import org.adligo.tests4j.models.shared.results.I_TrialRunResult;
-import org.adligo.tests4j.models.shared.trials.MetaTrial;
+import org.adligo.tests4j.models.shared.trials.AbstractTrial;
+import org.adligo.tests4j.models.shared.trials.I_MetaTrial;
+import org.adligo.tests4j.models.shared.trials.TrialTypeAnnotation;
 
-public class ExampleMetaTrial extends MetaTrial {
+@TrialTypeAnnotation (type=TrialType.META_TRIAL_TYPE)
+public class ExampleMetaTrial  extends AbstractTrial implements I_MetaTrial {
 
 	@Override
 	public void afterMetadataCalculated(I_TrialRunMetadata pMetadata)
 			throws Exception {
-		// TODO Auto-generated method stub
-		super.afterMetadataCalculated(pMetadata);
+		assertGreaterThanOrEquals(2, pMetadata.getAllTrialsCount());
+		assertGreaterThanOrEquals(9, pMetadata.getAllTestsCount());
 	}
 
 	@Override
 	public void afterNonMetaTrialsRun(I_TrialRunResult results)
 			throws Exception {
 		
-		assertGreaterThanOrEquals(1000, results.getAsserts());
+		assertGreaterThanOrEquals(236, results.getAsserts());
 	}
 
 }

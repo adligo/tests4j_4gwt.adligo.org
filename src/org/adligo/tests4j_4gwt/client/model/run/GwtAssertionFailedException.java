@@ -1,5 +1,6 @@
 package org.adligo.tests4j_4gwt.client.model.run;
 
+
 public class GwtAssertionFailedException extends RuntimeException {
 
 	/**
