@@ -4,6 +4,7 @@ import org.adligo.tests4j.models.shared.metadata.I_TrialRunMetadata;
 import org.adligo.tests4j.models.shared.results.I_TrialResult;
 import org.adligo.tests4j.models.shared.results.I_TrialRunResult;
 import org.adligo.tests4j.models.shared.system.I_Tests4J_Listener;
+import org.adligo.tests4j.models.shared.system.I_Tests4J_ProcessInfo;
 import org.adligo.tests4j.shared.report.summary.SummaryReporter;
 import org.adligo.tests4j_4gwt.client.model.run.GwtTests4J_Params;
 import org.adligo.tests4j_4gwt.client.model.run.GwtTests4J_Processor;
@@ -84,7 +85,12 @@ public class TrialRunPresenter implements I_RunHandler, I_Tests4J_Listener {
 	}
 
 	@Override
-	public void onProgress(String process, double pctComplete) {
-		summaryReporter.onProgress(process, pctComplete);
+	public void onProccessStateChange(I_Tests4J_ProcessInfo info) {
+		summaryReporter.onProccessStateChange(info);
+	}
+	@Override
+	public void onProgress(I_Tests4J_ProcessInfo info) {
+		// TODO Auto-generated method stub
+		
 	}
 }

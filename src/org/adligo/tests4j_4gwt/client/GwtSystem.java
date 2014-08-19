@@ -1,6 +1,9 @@
 package org.adligo.tests4j_4gwt.client;
 
+import org.adligo.tests4j.models.shared.common.DefaultSystem;
 import org.adligo.tests4j.models.shared.common.I_System;
+
+import com.sun.xml.internal.ws.api.streaming.XMLStreamReaderFactory.Default;
 
 public class GwtSystem implements I_System {
 
@@ -26,6 +29,11 @@ public class GwtSystem implements I_System {
 	@Override
 	public String getLineSeperator() {
 		return "\n";
+	}
+
+	@Override
+	public String getCurrentThreadName() {
+		return DefaultSystem.DEFAULT_THREAD_NAME;
 	}
 
 }
