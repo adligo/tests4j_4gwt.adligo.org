@@ -3,7 +3,7 @@ package org.adligo.tests4j_4gwt.client.model.example;
 import java.util.Set;
 
 import org.adligo.tests4j.models.shared.common.Platform;
-import org.adligo.tests4j.models.shared.dependency.GWT_2_6_DependencyGroup;
+import org.adligo.tests4j.models.shared.dependency_groups.gwt.GWT_2_6_DependencyGroup;
 import org.adligo.tests4j.models.shared.trials.PlatformType;
 import org.adligo.tests4j.models.shared.trials.SourceFileScope;
 import org.adligo.tests4j.models.shared.trials.SourceFileTrial;

@@ -1,5 +1,7 @@
 package org.adligo.tests4j_4gwt.client;
 
+import java.io.PrintStream;
+
 import org.adligo.tests4j.models.shared.common.DefaultSystem;
 import org.adligo.tests4j.models.shared.common.I_System;
 
@@ -34,6 +36,11 @@ public class GwtSystem implements I_System {
 	@Override
 	public String getCurrentThreadName() {
 		return DefaultSystem.DEFAULT_THREAD_NAME;
+	}
+
+	@Override
+	public PrintStream getOut() {
+		return System.out;
 	}
 
 }
