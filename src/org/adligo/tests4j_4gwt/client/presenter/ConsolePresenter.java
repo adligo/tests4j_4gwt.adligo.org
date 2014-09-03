@@ -64,7 +64,7 @@ public class ConsolePresenter implements I_Tests4J_Log {
 
 	@Override
 	public String getLineSeperator() {
-		return Tests4J_System.getLineSeperator();
+		return Tests4J_System.lineSeperator();
 	}
 
 	public int getBufferSize() {

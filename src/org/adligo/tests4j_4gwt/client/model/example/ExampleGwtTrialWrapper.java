@@ -47,123 +47,123 @@ public class ExampleGwtTrialWrapper implements I_GwtTrialWrapper {
 	@Override
 	public List<I_GwtMethodWrapper> getTests() {
 		List<I_GwtMethodWrapper> tests = new ArrayList<I_GwtMethodWrapper>();
-		tests.add(get_testJavaAnnotation());
-		tests.add(get_testJavaIo());
-		tests.add(get_testJavaLang());
-		tests.add(get_testJavaLogging());
-		tests.add(get_testJavaMath());
-		tests.add(get_testJavaSql());
-		tests.add(get_testJavaUtil());
+		tests.add(get_testGetPrimitive());
+		tests.add(get_testIsClassOrArray());
+		tests.add(get_testGetArrayType());
+		tests.add(get_testToNames());
+		tests.add(get_testIsClass());
+		tests.add(get_testIsPrimitive());
+		tests.add(get_testToResource());
 		return tests;
 	}
 
-	private I_GwtMethodWrapper get_testJavaLang() {
+	private I_GwtMethodWrapper get_testGetArrayType() {
 		return new I_GwtMethodWrapper() {
 
 			@Override
 			public String getName() {
-				return "testJavaLang";
+				return "testGetArrayType";
 			}
 
 			@Override
 			public void run() {
-				trial.testJavaLang();
+				trial.testGetArrayType();
 			}
 			
 		};
 	}
 	
-	private I_GwtMethodWrapper get_testJavaAnnotation() {
+	private I_GwtMethodWrapper get_testGetPrimitive() {
 		return new I_GwtMethodWrapper() {
 
 			@Override
 			public String getName() {
-				return "testJavaAnnotation";
+				return "testGetPrimitive";
 			}
 
 			@Override
 			public void run() {
-				trial.testJavaAnnotation();
+				trial.testGetPrimitive();
 			}
 			
 		};
 	}
 	
-	private I_GwtMethodWrapper get_testJavaMath() {
+	private I_GwtMethodWrapper get_testIsClass() {
 		return new I_GwtMethodWrapper() {
 
 			@Override
 			public String getName() {
-				return "testJavaMath";
+				return "testIsClass";
 			}
 
 			@Override
 			public void run() {
-				trial.testJavaMath();
+				trial.testIsClass();
 			}
 			
 		};
 	}
 	
-	private I_GwtMethodWrapper get_testJavaIo() {
+	private I_GwtMethodWrapper get_testIsClassOrArray() {
 		return new I_GwtMethodWrapper() {
 
 			@Override
 			public String getName() {
-				return "testJavaIo";
+				return "testIsClassOrArray";
 			}
 
 			@Override
 			public void run() {
-				trial.testJavaIo();
+				trial.testIsClassOrArray();
 			}
 			
 		};
 	}
 	
-	private I_GwtMethodWrapper get_testJavaSql() {
+	private I_GwtMethodWrapper get_testIsPrimitive() {
 		return new I_GwtMethodWrapper() {
 
 			@Override
 			public String getName() {
-				return "testJavaSql";
+				return "testIsPrimitive";
 			}
 
 			@Override
 			public void run() {
-				trial.testJavaSql();
+				trial.testIsPrimitive();
 			}
 			
 		};
 	}
 	
-	private I_GwtMethodWrapper get_testJavaLogging() {
+	private I_GwtMethodWrapper get_testToNames() {
 		return new I_GwtMethodWrapper() {
 
 			@Override
 			public String getName() {
-				return "testJavaLogging";
+				return "testToNames";
 			}
 
 			@Override
 			public void run() {
-				trial.testJavaLogging();
+				trial.testToNames();
 			}
 			
 		};
 	}
 	
-	private I_GwtMethodWrapper get_testJavaUtil() {
+	private I_GwtMethodWrapper get_testToResource() {
 		return new I_GwtMethodWrapper() {
 
 			@Override
 			public String getName() {
-				return "testJavaUtil";
+				return "testToResource";
 			}
 
 			@Override
 			public void run() {
-				trial.testJavaUtil();
+				trial.testToResource();
 			}
 			
 		};

@@ -21,7 +21,7 @@ public class ExampleMetaTrial  extends AbstractTrial implements I_MetaTrial {
 	public void afterNonMetaTrialsRun(I_TrialRunResult results)
 			throws Exception {
 		
-		assertGreaterThanOrEquals(236, results.getAsserts());
+		assertGreaterThanOrEquals(54, results.getAsserts());
 	}
 
 }

@@ -29,7 +29,7 @@ public class GwtSystem implements I_System {
 	 * browser screen, where a line separator is wanted (ie stacktraces, text areas exc)
 	 */
 	@Override
-	public String getLineSeperator() {
+	public String lineSeperator() {
 		return "\n";
 	}
 
@@ -41,6 +41,11 @@ public class GwtSystem implements I_System {
 	@Override
 	public PrintStream getOut() {
 		return System.out;
+	}
+
+	@Override
+	public String getJseVersion() {
+		return "NotJseButJavascript";
 	}
 
 }

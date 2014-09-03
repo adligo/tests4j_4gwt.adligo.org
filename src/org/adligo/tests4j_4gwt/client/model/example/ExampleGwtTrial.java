@@ -1,9 +1,13 @@
 package org.adligo.tests4j_4gwt.client.model.example;
 
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
+import org.adligo.tests4j.models.dependency_groups.gwt.GWT_2_6_DependencyGroup;
+import org.adligo.tests4j.models.shared.asserts.common.ExpectedThrownData;
+import org.adligo.tests4j.models.shared.asserts.common.I_Thrower;
+import org.adligo.tests4j.models.shared.common.ClassMethods;
 import org.adligo.tests4j.models.shared.common.Platform;
-import org.adligo.tests4j.models.shared.dependency_groups.gwt.GWT_2_6_DependencyGroup;
 import org.adligo.tests4j.models.shared.trials.PlatformType;
 import org.adligo.tests4j.models.shared.trials.SourceFileScope;
 import org.adligo.tests4j.models.shared.trials.SourceFileTrial;
@@ -22,69 +26,213 @@ import org.adligo.tests4j.models.shared.trials.Test;
 	@PlatformType (platform=Platform.JSE)
 })
 public class ExampleGwtTrial extends SourceFileTrial {
+
+	private static final String CLASS_METHODS_TYPE = "Lorg/adligo/tests4j/models/shared/common/ClassMethods;";
+
 	@Test
-	public void testJavaLang() {
-		Set<Class<?>> javaLangClasses =  GWT_2_6_DependencyGroup.JAVA_LANG;
-		for (Class<?> c: javaLangClasses) {
-			assertNotNull(c);
-			assertNotNull(c.hashCode());
-		}
+	public void testCreateArrays() {
+		assertEquals("", ClassMethods.createArrayChars(0));
+		assertEquals("[", ClassMethods.createArrayChars(1));
+		assertEquals("[[", ClassMethods.createArrayChars(2));
+		assertEquals("[[[", ClassMethods.createArrayChars(3));
+		assertEquals("[[[[", ClassMethods.createArrayChars(4));
+		assertEquals("[[[[[", ClassMethods.createArrayChars(5));
+	}
+	
+
+	@Test
+	public void testToNames() {
+		
+		List<String> names = ClassMethods.toNames(null);
+		assertNotNull(names);
+		assertEquals(0, names.size());
+		
+		List<Class<?>> clazzes = new ArrayList<Class<?>>();
+		clazzes.add(null);
+		clazzes.add(ExampleGwtTrial.class);
+		
+		names = ClassMethods.toNames(clazzes);
+		assertNotNull(names);
+		assertEquals(1, names.size());
+		assertContains(names, ExampleGwtTrial.class.getName());
 	}
 	
 	@Test
-	public void testJavaAnnotation() {
-		Set<Class<?>> javaLangClasses =  GWT_2_6_DependencyGroup.JAVA_ANNOTATION;
-		for (Class<?> c: javaLangClasses) {
-			assertNotNull(c);
-			assertNotNull(c.hashCode());
-		}
-	}
-			
-	
-	@Test
-	public void testJavaMath() {
-		Set<Class<?>> javaLangClasses =  GWT_2_6_DependencyGroup.JAVA_MATH;
-		for (Class<?> c: javaLangClasses) {
-			assertNotNull(c);
-			assertNotNull(c.hashCode());
-		}
+	public void testToResource() {
+		assertEquals("/org/adligo/tests4j/models/shared/common/ClassMethods.class",
+				ClassMethods.toResource(ClassMethods.class.getName()));
+		assertEquals("/org/adligo/tests4j_4gwt/client/model/example/ExampleGwtTrial.class",
+				ClassMethods.toResource(ExampleGwtTrial.class.getName()));
 	}
 	
 	@Test
-	public void testJavaIo() {
-		Set<Class<?>> javaLangClasses =  GWT_2_6_DependencyGroup.JAVA_IO;
-		for (Class<?> c: javaLangClasses) {
-			assertNotNull(c);
-			assertNotNull(c.hashCode());
-		}
+	public void testFromTypeDescription() {
+		
+		assertThrown(new ExpectedThrownData(IllegalArgumentException.class),
+				new I_Thrower() {
+					
+					@Override
+					public void run() throws Throwable {
+						ClassMethods.fromTypeDescription(null);
+					}
+				});
+		assertThrown(new ExpectedThrownData(IllegalArgumentException.class),
+				new I_Thrower() {
+					
+					@Override
+					public void run() throws Throwable {
+						ClassMethods.fromTypeDescription("");
+					}
+				});
+		assertEquals(ClassMethods.class.getName(),
+				ClassMethods.fromTypeDescription(CLASS_METHODS_TYPE));
+		assertEquals(ExampleGwtTrial.class.getName(),
+				ClassMethods.fromTypeDescription("Lorg/adligo/tests4j_tests/models/shared/common/ExampleGwtTrial;"));
+		assertEquals("[" + ClassMethods.class.getName(),
+				ClassMethods.fromTypeDescription("[Lorg/adligo/tests4j/models/shared/common/ClassMethods;"));
+		assertEquals("[" + ExampleGwtTrial.class.getName(),
+				ClassMethods.fromTypeDescription("[Lorg/adligo/tests4j_tests/models/shared/common/ExampleGwtTrial;"));
+		assertEquals("[" + StackTraceElement.class.getName(),
+				ClassMethods.fromTypeDescription("[Ljava/lang/StackTraceElement;"));
+		
+		
+		assertEquals("byte",
+				ClassMethods.fromTypeDescription("B"));
+		assertEquals("char",
+				ClassMethods.fromTypeDescription("C"));
+		assertEquals("double",
+				ClassMethods.fromTypeDescription("D"));
+		assertEquals("float",
+				ClassMethods.fromTypeDescription("F"));
+		assertEquals("int",
+				ClassMethods.fromTypeDescription("I"));
+		assertEquals("long",
+				ClassMethods.fromTypeDescription("J"));
+		assertEquals("short",
+				ClassMethods.fromTypeDescription("S"));
+		assertEquals("boolean",
+				ClassMethods.fromTypeDescription("Z"));
+		
+		//there could be a lot of ways to make arrays of arrays;
+		assertPrimitiveArrays("[");
+		assertPrimitiveArrays("[[");
+		assertPrimitiveArrays("[[[");
+		assertPrimitiveArrays("[[[[");
+		assertPrimitiveArrays("[[[[[");
+	}
+
+	public void assertPrimitiveArrays(String prefix) {
+		//arrays
+		assertEquals(prefix + "byte",
+				ClassMethods.fromTypeDescription(prefix +"B"));
+		assertEquals(prefix + "char",
+				ClassMethods.fromTypeDescription(prefix +"C"));
+		assertEquals(prefix + "double",
+				ClassMethods.fromTypeDescription(prefix +"D"));
+		assertEquals(prefix + "float",
+				ClassMethods.fromTypeDescription(prefix +"F"));
+		assertEquals(prefix + "int",
+				ClassMethods.fromTypeDescription(prefix +"I"));
+		assertEquals(prefix + "long",
+				ClassMethods.fromTypeDescription(prefix +"J"));
+		assertEquals(prefix + "short",
+				ClassMethods.fromTypeDescription(prefix +"S"));
+		assertEquals(prefix + "boolean",
+				ClassMethods.fromTypeDescription(prefix +"Z"));
 	}
 	
 	@Test
-	public void testJavaSql() {
-		Set<Class<?>> javaLangClasses =  GWT_2_6_DependencyGroup.JAVA_SQL;
-		for (Class<?> c: javaLangClasses) {
-			assertNotNull(c);
-			assertNotNull(c.hashCode());
-		}
+	public void testGetArrayType() {
+			assertGetArrayType("[");
+			assertGetArrayType("[[");
+			assertGetArrayType("[[[");
+			assertGetArrayType("[[[[");
+			assertGetArrayType("[[[[[");
+	}
+
+	public void assertGetArrayType(String prefix) {
+		assertEquals(CLASS_METHODS_TYPE,
+				ClassMethods.getArrayType(prefix + CLASS_METHODS_TYPE));
+		assertEquals(ClassMethods.BOOLEAN,
+				ClassMethods.getArrayType(prefix + ClassMethods.BOOLEAN));
+		assertEquals(ClassMethods.BYTE,
+				ClassMethods.getArrayType(prefix + ClassMethods.BYTE));
+		assertEquals(ClassMethods.class.getName(),
+				ClassMethods.getArrayType(prefix + ClassMethods.class.getName()));
 	}
 	
 	@Test
-	public void testJavaUtil() {
-		Set<Class<?>> javaLangClasses =  GWT_2_6_DependencyGroup.JAVA_UTIL;
-		for (Class<?> c: javaLangClasses) {
-			assertNotNull(c);
-			assertNotNull(c.hashCode());
-		}
+	public void testCountArrays() {
+		assertGetArrays(0, "");
+		assertGetArrays(1, "[");
+		assertGetArrays(2, "[[");
+		assertGetArrays(3, "[[[");
+		assertGetArrays(4, "[[[[");
+		assertGetArrays(5, "[[[[[");
+	}
+	
+	public void assertGetArrays(int count, String prefix) {
+		assertEquals(count,
+				ClassMethods.getArrays(prefix + CLASS_METHODS_TYPE));
+		assertEquals(count,
+				ClassMethods.getArrays(prefix + ClassMethods.BOOLEAN));
+		assertEquals(count,
+				ClassMethods.getArrays(prefix + ClassMethods.BYTE));
+		assertEquals(count,
+				ClassMethods.getArrays(prefix + ClassMethods.class.getName()));
+	}
+	
+	
+	
+	@Test
+	public void testIsClassOrArray() {
+		assertTrue(ClassMethods.isClass('L'));
+		assertFalse(ClassMethods.isClass('['));
+		assertFalse(ClassMethods.isClass('B'));
+		
+		assertTrue(ClassMethods.isArray('['));
+		assertFalse(ClassMethods.isArray(']'));
+		assertFalse(ClassMethods.isArray('B'));
 	}
 	
 	@Test
-	public void testJavaLogging() {
-		Set<Class<?>> javaLangClasses =  GWT_2_6_DependencyGroup.JAVA_LOGGING;
-		for (Class<?> c: javaLangClasses) {
-			assertNotNull(c);
-			assertNotNull(c.hashCode());
-		}
+	public void testIsPrimitive() {
+		assertTrue(ClassMethods.isPrimitiveClassChar('B'));
+		assertTrue(ClassMethods.isPrimitiveClassChar('C'));
+		assertTrue(ClassMethods.isPrimitiveClassChar('D'));
+		assertTrue(ClassMethods.isPrimitiveClassChar('F'));
+		
+		assertTrue(ClassMethods.isPrimitiveClassChar('I'));
+		assertTrue(ClassMethods.isPrimitiveClassChar('J'));
+		assertTrue(ClassMethods.isPrimitiveClassChar('S'));
+		assertTrue(ClassMethods.isPrimitiveClassChar('Z'));
+		
+		assertFalse(ClassMethods.isPrimitiveClassChar('L'));
+		assertFalse(ClassMethods.isPrimitiveClassChar('['));
 	}
+	
+	@Test
+	public void testIsClass() {
+		assertTrue(ClassMethods.isClass('L'));
+		assertFalse(ClassMethods.isClass('C'));
+	}
+	
+	@Test
+	public void testGetPrimitive() {
+		assertEquals("byte", ClassMethods.getPrimitive('B'));
+		assertEquals("char",ClassMethods.getPrimitive('C'));
+		assertEquals("double", ClassMethods.getPrimitive('D'));
+		assertEquals("float", ClassMethods.getPrimitive('F'));
+		
+		assertEquals("int", ClassMethods.getPrimitive('I'));
+		assertEquals("long", ClassMethods.getPrimitive('J'));
+		assertEquals("short", ClassMethods.getPrimitive('S'));
+		assertEquals("boolean", ClassMethods.getPrimitive('Z'));
+		
+		assertNull(ClassMethods.getPrimitive('L'));
+		assertNull(ClassMethods.getPrimitive('['));
+	}
+	
 	
 
 }
