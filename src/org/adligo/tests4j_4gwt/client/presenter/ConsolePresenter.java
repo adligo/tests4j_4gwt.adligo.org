@@ -82,5 +82,10 @@ public class ConsolePresenter implements I_Tests4J_Log {
 	public void setUi(I_ConsoleUi ui) {
 		this.ui = ui;
 	}
+	@Override
+	public String getCurrentThreadName() {
+		//its javascript so there is only one main thread
+		return " ";
+	}
 
 }
