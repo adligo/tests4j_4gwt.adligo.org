@@ -3,7 +3,6 @@ package org.adligo.tests4j_4gwt.client.model.example;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.adligo.tests4j.models.dependency_groups.gwt.GWT_2_6_DependencyGroup;
 import org.adligo.tests4j.models.shared.asserts.common.ExpectedThrownData;
 import org.adligo.tests4j.models.shared.asserts.common.I_Thrower;
 import org.adligo.tests4j.models.shared.common.ClassMethods;
@@ -20,7 +19,7 @@ import org.adligo.tests4j.models.shared.trials.Test;
  * @author scott
  *
  */
-@SourceFileScope (sourceClass=GWT_2_6_DependencyGroup.class)
+@SourceFileScope (sourceClass=ClassMethods.class)
 @TargetedPlatform ({
 	@PlatformType (platform=Platform.GWTC),
 	@PlatformType (platform=Platform.JSE)
