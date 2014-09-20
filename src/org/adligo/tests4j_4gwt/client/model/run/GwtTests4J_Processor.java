@@ -2,6 +2,7 @@ package org.adligo.tests4j_4gwt.client.model.run;
 
 import java.util.List;
 
+import org.adligo.tests4j.models.shared.asserts.common.I_AssertListener;
 import org.adligo.tests4j.models.shared.asserts.uniform.EvaluatorLookup;
 import org.adligo.tests4j.models.shared.asserts.uniform.I_EvaluatorLookup;
 import org.adligo.tests4j.models.shared.common.I_Platform;
@@ -20,7 +21,6 @@ import org.adligo.tests4j.models.shared.results.I_TrialRunResult;
 import org.adligo.tests4j.models.shared.results.TrialFailure;
 import org.adligo.tests4j.models.shared.results.TrialRunResult;
 import org.adligo.tests4j.models.shared.results.TrialRunResultMutant;
-import org.adligo.tests4j.models.shared.system.I_Tests4J_AssertListener;
 import org.adligo.tests4j.models.shared.system.I_Tests4J_Listener;
 import org.adligo.tests4j.models.shared.trials.I_MetaTrial;
 import org.adligo.tests4j.models.shared.trials.I_Trial;
@@ -45,7 +45,7 @@ public class GwtTests4J_Processor implements I_TrialBindings {
 	}
 
 	@Override
-	public I_Tests4J_AssertListener getAssertListener() {
+	public I_AssertListener getAssertListener() {
 		return assertListener;
 	}
 
