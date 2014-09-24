@@ -2,8 +2,8 @@ package org.adligo.tests4j_4gwt.client;
 
 import java.io.PrintStream;
 
-import org.adligo.tests4j.models.shared.common.DefaultSystem;
-import org.adligo.tests4j.models.shared.common.I_System;
+import org.adligo.tests4j.shared.common.DefaultSystem;
+import org.adligo.tests4j.shared.common.I_System;
 
 import com.sun.xml.internal.ws.api.streaming.XMLStreamReaderFactory.Default;
 
@@ -46,6 +46,12 @@ public class GwtSystem implements I_System {
 	@Override
 	public String getJseVersion() {
 		return "NotJseButJavascript";
+	}
+
+	@Override
+	public boolean isMainSystem() {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 }

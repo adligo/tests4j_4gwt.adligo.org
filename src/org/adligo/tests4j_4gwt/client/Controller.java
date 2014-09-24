@@ -1,7 +1,7 @@
 package org.adligo.tests4j_4gwt.client;
 
-import org.adligo.tests4j.models.shared.common.DelegateSystem;
-import org.adligo.tests4j.models.shared.common.Tests4J_System;
+import org.adligo.tests4j.shared.common.DelegateSystem;
+import org.adligo.tests4j.shared.common.Tests4J_System;
 import org.adligo.tests4j_4gwt.client.model.run.GwtTests4J_Params;
 import org.adligo.tests4j_4gwt.client.presenter.TrialRunPresenter;
 import org.adligo.tests4j_4gwt.client.ui.I_TrialRunUi;

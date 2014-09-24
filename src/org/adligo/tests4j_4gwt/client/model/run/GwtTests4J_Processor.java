@@ -2,14 +2,6 @@ package org.adligo.tests4j_4gwt.client.model.run;
 
 import java.util.List;
 
-import org.adligo.tests4j.models.shared.asserts.common.I_AssertListener;
-import org.adligo.tests4j.models.shared.asserts.uniform.EvaluatorLookup;
-import org.adligo.tests4j.models.shared.asserts.uniform.I_EvaluatorLookup;
-import org.adligo.tests4j.models.shared.common.I_Platform;
-import org.adligo.tests4j.models.shared.common.Platform;
-import org.adligo.tests4j.models.shared.common.StackTraceBuilder;
-import org.adligo.tests4j.models.shared.common.Tests4J_System;
-import org.adligo.tests4j.models.shared.common.TrialType;
 import org.adligo.tests4j.models.shared.metadata.I_TrialRunMetadata;
 import org.adligo.tests4j.models.shared.metadata.TestMetadataMutant;
 import org.adligo.tests4j.models.shared.metadata.TrialMetadataMutant;
@@ -25,6 +17,14 @@ import org.adligo.tests4j.models.shared.system.I_Tests4J_Listener;
 import org.adligo.tests4j.models.shared.trials.I_MetaTrial;
 import org.adligo.tests4j.models.shared.trials.I_Trial;
 import org.adligo.tests4j.models.shared.trials.I_TrialBindings;
+import org.adligo.tests4j.shared.asserts.common.I_AssertListener;
+import org.adligo.tests4j.shared.asserts.uniform.EvaluatorLookup;
+import org.adligo.tests4j.shared.asserts.uniform.I_EvaluatorLookup;
+import org.adligo.tests4j.shared.common.I_Platform;
+import org.adligo.tests4j.shared.common.Platform;
+import org.adligo.tests4j.shared.common.StackTraceBuilder;
+import org.adligo.tests4j.shared.common.Tests4J_System;
+import org.adligo.tests4j.shared.common.TrialType;
 import org.adligo.tests4j.shared.output.I_Tests4J_Log;
 import org.adligo.tests4j.shared.report.summary.SummaryReporter;
 

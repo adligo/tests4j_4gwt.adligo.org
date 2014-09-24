@@ -1,11 +1,11 @@
 package org.adligo.tests4j_4gwt.client.model.example;
 
-import org.adligo.tests4j.models.shared.common.TrialType;
 import org.adligo.tests4j.models.shared.metadata.I_TrialRunMetadata;
 import org.adligo.tests4j.models.shared.results.I_TrialRunResult;
 import org.adligo.tests4j.models.shared.trials.AbstractTrial;
 import org.adligo.tests4j.models.shared.trials.I_MetaTrial;
 import org.adligo.tests4j.models.shared.trials.TrialTypeAnnotation;
+import org.adligo.tests4j.shared.common.TrialType;
 
 @TrialTypeAnnotation (type=TrialType.META_TRIAL_TYPE)
 public class ExampleMetaTrial  extends AbstractTrial implements I_MetaTrial {

@@ -2,10 +2,10 @@ package org.adligo.tests4j_4gwt.client.model.run;
 
 import java.util.List;
 
-import org.adligo.tests4j.models.shared.common.StackTraceBuilder;
 import org.adligo.tests4j.models.shared.results.TrialFailure;
 import org.adligo.tests4j.models.shared.system.I_Tests4J_Listener;
 import org.adligo.tests4j.models.shared.trials.I_Trial;
+import org.adligo.tests4j.shared.common.StackTraceBuilder;
 
 public class GwtTests4J_TrialRunner {
 	private I_Trial trial;

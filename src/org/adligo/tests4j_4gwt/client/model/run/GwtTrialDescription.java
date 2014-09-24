@@ -1,6 +1,6 @@
 package org.adligo.tests4j_4gwt.client.model.run;
 
-import org.adligo.tests4j.models.shared.common.I_TrialType;
+import org.adligo.tests4j.shared.common.I_TrialType;
 
 public class GwtTrialDescription implements I_GwtTrialDescription {
 	private String trialName;

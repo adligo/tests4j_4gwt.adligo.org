@@ -6,16 +6,16 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.adligo.tests4j.models.shared.asserts.common.I_AssertCommand;
-import org.adligo.tests4j.models.shared.asserts.common.I_TestFailure;
-import org.adligo.tests4j.models.shared.asserts.common.I_AssertListener;
-import org.adligo.tests4j.models.shared.asserts.common.TestFailure;
 import org.adligo.tests4j.models.shared.results.BaseTrialResult;
 import org.adligo.tests4j.models.shared.results.BaseTrialResultMutant;
 import org.adligo.tests4j.models.shared.results.I_TrialFailure;
 import org.adligo.tests4j.models.shared.results.I_TrialResult;
 import org.adligo.tests4j.models.shared.results.TestResult;
 import org.adligo.tests4j.models.shared.results.TestResultMutant;
+import org.adligo.tests4j.shared.asserts.common.I_AssertCommand;
+import org.adligo.tests4j.shared.asserts.common.I_AssertListener;
+import org.adligo.tests4j.shared.asserts.common.I_TestFailure;
+import org.adligo.tests4j.shared.asserts.common.TestFailure;
 
 public class GwtTests4J_AssertListener implements I_AssertListener {
 	private Map<String,BaseTrialResult> trialResults = new HashMap<String, BaseTrialResult>();
