@@ -26,7 +26,7 @@ import org.adligo.tests4j.shared.common.Platform;
 })
 public class ExampleGwtTrial extends SourceFileTrial {
 
-	private static final String CLASS_METHODS_TYPE = "Lorg/adligo/tests4j/models/shared/common/ClassMethods;";
+	private static final String CLASS_METHODS_TYPE = "Lorg/adligo/tests4j/shared/common/ClassMethods;";
 
 	@Test
 	public void testCreateArrays() {
@@ -58,7 +58,7 @@ public class ExampleGwtTrial extends SourceFileTrial {
 	
 	@Test
 	public void testToResource() {
-		assertEquals("/org/adligo/tests4j/models/shared/common/ClassMethods.class",
+		assertEquals("/org/adligo/tests4j/shared/common/ClassMethods.class",
 				ClassMethods.toResource(ClassMethods.class.getName()));
 		assertEquals("/org/adligo/tests4j_4gwt/client/model/example/ExampleGwtTrial.class",
 				ClassMethods.toResource(ExampleGwtTrial.class.getName()));

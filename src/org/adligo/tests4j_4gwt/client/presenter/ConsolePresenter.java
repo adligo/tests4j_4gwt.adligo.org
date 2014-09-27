@@ -7,7 +7,7 @@ import org.adligo.tests4j.shared.asserts.line_text.TextLines;
 import org.adligo.tests4j.shared.common.StackTraceBuilder;
 import org.adligo.tests4j.shared.common.Tests4J_System;
 import org.adligo.tests4j.shared.output.I_Tests4J_Log;
-import org.adligo.tests4j.shared.report.summary.DefaultReporterStates;
+import org.adligo.tests4j.system.shared.report.summary.DefaultReporterStates;
 import org.adligo.tests4j_4gwt.client.ui.I_ConsoleUi;
 
 public class ConsolePresenter implements I_Tests4J_Log {

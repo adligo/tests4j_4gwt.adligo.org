@@ -13,7 +13,6 @@ import org.adligo.tests4j.models.shared.results.I_TrialRunResult;
 import org.adligo.tests4j.models.shared.results.TrialFailure;
 import org.adligo.tests4j.models.shared.results.TrialRunResult;
 import org.adligo.tests4j.models.shared.results.TrialRunResultMutant;
-import org.adligo.tests4j.models.shared.system.I_Tests4J_Listener;
 import org.adligo.tests4j.models.shared.trials.I_MetaTrial;
 import org.adligo.tests4j.models.shared.trials.I_Trial;
 import org.adligo.tests4j.models.shared.trials.I_TrialBindings;
@@ -26,7 +25,8 @@ import org.adligo.tests4j.shared.common.StackTraceBuilder;
 import org.adligo.tests4j.shared.common.Tests4J_System;
 import org.adligo.tests4j.shared.common.TrialType;
 import org.adligo.tests4j.shared.output.I_Tests4J_Log;
-import org.adligo.tests4j.shared.report.summary.SummaryReporter;
+import org.adligo.tests4j.system.shared.I_Tests4J_Listener;
+import org.adligo.tests4j.system.shared.report.summary.SummaryReporter;
 
 public class GwtTests4J_Processor implements I_TrialBindings {
 	private GwtTests4J_AssertListener assertListener = new GwtTests4J_AssertListener();
