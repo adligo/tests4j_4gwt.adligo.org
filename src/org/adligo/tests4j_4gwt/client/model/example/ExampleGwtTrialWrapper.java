@@ -3,8 +3,8 @@ package org.adligo.tests4j_4gwt.client.model.example;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.adligo.tests4j.models.shared.trials.I_Trial;
 import org.adligo.tests4j.shared.common.TrialType;
+import org.adligo.tests4j.system.shared.trials.I_Trial;
 import org.adligo.tests4j_4gwt.client.model.run.GwtTrialDescription;
 import org.adligo.tests4j_4gwt.client.model.run.I_GwtMethodWrapper;
 import org.adligo.tests4j_4gwt.client.model.run.I_GwtTrialDescription;

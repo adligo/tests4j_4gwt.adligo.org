@@ -2,7 +2,7 @@ package org.adligo.tests4j_4gwt.client.model.run;
 
 import java.util.List;
 
-import org.adligo.tests4j.models.shared.trials.I_Trial;
+import org.adligo.tests4j.system.shared.trials.I_Trial;
 
 /**
  * a interface to 
