@@ -1,10 +1,10 @@
 package org.adligo.tests4j_4gwt.client.presenter;
 
 import org.adligo.tests4j.models.shared.metadata.I_TrialRunMetadata;
+import org.adligo.tests4j.models.shared.results.I_PhaseState;
 import org.adligo.tests4j.models.shared.results.I_TrialResult;
 import org.adligo.tests4j.models.shared.results.I_TrialRunResult;
 import org.adligo.tests4j.system.shared.api.I_Tests4J_Listener;
-import org.adligo.tests4j.system.shared.api.I_Tests4J_ProcessInfo;
 import org.adligo.tests4j.system.shared.report.summary.SummaryReporter;
 import org.adligo.tests4j_4gwt.client.model.run.GwtTests4J_Params;
 import org.adligo.tests4j_4gwt.client.model.run.GwtTests4J_Processor;
@@ -85,11 +85,11 @@ public class TrialRunPresenter implements I_RunHandler, I_Tests4J_Listener {
 	}
 
 	@Override
-	public void onProccessStateChange(I_Tests4J_ProcessInfo info) {
+	public void onProccessStateChange(I_PhaseState info) {
 		summaryReporter.onProccessStateChange(info);
 	}
 	@Override
-	public void onProgress(I_Tests4J_ProcessInfo info) {
+	public void onProgress(I_PhaseState info) {
 		// TODO Auto-generated method stub
 		
 	}

@@ -1,16 +1,18 @@
 package org.adligo.tests4j_4gwt.client.presenter;
 
+import org.adligo.tests4j.shared.asserts.line_text.TextLines;
+import org.adligo.tests4j.shared.common.I_System;
+import org.adligo.tests4j.shared.common.StackTraceBuilder;
+import org.adligo.tests4j.shared.output.I_Tests4J_Log;
+import org.adligo.tests4j.system.shared.report.summary.DefaultReporterStates;
+import org.adligo.tests4j_4gwt.client.GwtSystem;
+import org.adligo.tests4j_4gwt.client.ui.I_ConsoleUi;
+
 import java.util.HashMap;
 import java.util.Map;
 
-import org.adligo.tests4j.shared.asserts.line_text.TextLines;
-import org.adligo.tests4j.shared.common.StackTraceBuilder;
-import org.adligo.tests4j.shared.common.Tests4J_System;
-import org.adligo.tests4j.shared.output.I_Tests4J_Log;
-import org.adligo.tests4j.system.shared.report.summary.DefaultReporterStates;
-import org.adligo.tests4j_4gwt.client.ui.I_ConsoleUi;
-
 public class ConsolePresenter implements I_Tests4J_Log {
+  private static final I_System SYS = new GwtSystem();
 	private Map<Class<?>, Boolean> active = new HashMap<Class<?>, Boolean>();
 	private int bufferSize = 100;
 	private int consoleMessages = 0;
@@ -64,7 +66,7 @@ public class ConsolePresenter implements I_Tests4J_Log {
 
 	@Override
 	public String getLineSeperator() {
-		return Tests4J_System.lineSeperator();
+		return SYS.lineSeperator();
 	}
 
 	public int getBufferSize() {

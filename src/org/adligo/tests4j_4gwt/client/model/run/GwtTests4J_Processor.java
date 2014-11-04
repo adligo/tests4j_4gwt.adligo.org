@@ -1,7 +1,5 @@
 package org.adligo.tests4j_4gwt.client.model.run;
 
-import java.util.List;
-
 import org.adligo.tests4j.models.shared.metadata.I_TrialRunMetadata;
 import org.adligo.tests4j.models.shared.metadata.TestMetadataMutant;
 import org.adligo.tests4j.models.shared.metadata.TrialMetadataMutant;
@@ -17,18 +15,21 @@ import org.adligo.tests4j.shared.asserts.common.I_AssertListener;
 import org.adligo.tests4j.shared.asserts.uniform.EvaluatorLookup;
 import org.adligo.tests4j.shared.asserts.uniform.I_EvaluatorLookup;
 import org.adligo.tests4j.shared.common.I_Platform;
+import org.adligo.tests4j.shared.common.I_System;
 import org.adligo.tests4j.shared.common.Platform;
 import org.adligo.tests4j.shared.common.StackTraceBuilder;
-import org.adligo.tests4j.shared.common.Tests4J_System;
 import org.adligo.tests4j.shared.common.TrialType;
 import org.adligo.tests4j.shared.output.I_Tests4J_Log;
 import org.adligo.tests4j.system.shared.api.I_Tests4J_Listener;
-import org.adligo.tests4j.system.shared.report.summary.SummaryReporter;
 import org.adligo.tests4j.system.shared.trials.I_MetaTrial;
 import org.adligo.tests4j.system.shared.trials.I_Trial;
 import org.adligo.tests4j.system.shared.trials.I_TrialBindings;
+import org.adligo.tests4j_4gwt.client.GwtSystem;
+
+import java.util.List;
 
 public class GwtTests4J_Processor implements I_TrialBindings {
+  private static final I_System SYS = new GwtSystem();
 	private GwtTests4J_AssertListener assertListener = new GwtTests4J_AssertListener();
 	private I_EvaluatorLookup evaluatorLookup = EvaluatorLookup.DEFAULT_LOOKUP;
 	private GwtTests4J_TrialRunner runner = new GwtTests4J_TrialRunner();
@@ -56,7 +57,7 @@ public class GwtTests4J_Processor implements I_TrialBindings {
 	}
 
 	public void run(GwtTests4J_Params params) {
-		start = Tests4J_System.getTime();
+		start = SYS.getTime();
 		runner.setListener(reporter);
 		
 		I_MetaTrial metaTrial = params.getMetaTrial();
@@ -143,7 +144,7 @@ public class GwtTests4J_Processor implements I_TrialBindings {
 	}
 	private void addDuration(TrialRunResultMutant trrm) {
 		trrm.setStartTime(start);
-		long end = Tests4J_System.getTime();
+		long end = SYS.getTime();
 		long dur = end - start;
 		trrm.setRunTime(dur);
 	}
