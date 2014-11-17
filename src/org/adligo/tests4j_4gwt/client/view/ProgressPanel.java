@@ -14,12 +14,12 @@ import com.google.gwt.user.client.ui.SimplePanel;
 public class ProgressPanel extends Composite {
 	private FlexTable flexTable;
 	private HorizontalPanel progressPanel;
-	private int total;
+	private long total;
 	private SimplePanel passedPanel;
 	private SimplePanel failedPanel;
 	private String widthString;
-	private int passed;
-	private int failed;
+	private long passed;
+	private long failed;
 	
 	public ProgressPanel() {
 		
@@ -41,7 +41,7 @@ public class ProgressPanel extends Composite {
 		
 	}
 
-	public void setTotal(int p) {
+	public void setTotal(long p) {
 		total = p;
 		passed = 0;
 		failed = 0;

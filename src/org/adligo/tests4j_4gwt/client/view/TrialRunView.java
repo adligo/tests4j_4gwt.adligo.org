@@ -147,7 +147,7 @@ public class TrialRunView extends Composite implements I_TrialRunUi {
 		
 	}
 	
-	public void setTotalTests(int p) {
+	public void setTotalTests(long p) {
 		summaryPanel.setTotal(p);
 	}
 

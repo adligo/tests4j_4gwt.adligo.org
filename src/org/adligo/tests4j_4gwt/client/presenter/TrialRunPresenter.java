@@ -5,6 +5,7 @@ import org.adligo.tests4j.models.shared.results.I_PhaseState;
 import org.adligo.tests4j.models.shared.results.I_TrialResult;
 import org.adligo.tests4j.models.shared.results.I_TrialRunResult;
 import org.adligo.tests4j.system.shared.api.I_Tests4J_Listener;
+import org.adligo.tests4j.system.shared.api.I_Tests4J_Params;
 import org.adligo.tests4j.system.shared.report.summary.SummaryReporter;
 import org.adligo.tests4j_4gwt.client.model.run.GwtTests4J_Params;
 import org.adligo.tests4j_4gwt.client.model.run.GwtTests4J_Processor;
@@ -52,7 +53,7 @@ public class TrialRunPresenter implements I_RunHandler, I_Tests4J_Listener {
 	@Override
 	public void onMetadataCalculated(I_TrialRunMetadata metadata) {
 		summaryReporter.onMetadataCalculated(metadata);
-		int tests = metadata.getAllTestsCount();
+		long tests = metadata.getAllTestsCount();
 		ui.setTotalTests(tests);
 	}
 
@@ -93,4 +94,9 @@ public class TrialRunPresenter implements I_RunHandler, I_Tests4J_Listener {
 		// TODO Auto-generated method stub
 		
 	}
+  @Override
+  public void onStartingSetup(I_Tests4J_Params params) {
+    // TODO Auto-generated method stub
+    
+  }
 }

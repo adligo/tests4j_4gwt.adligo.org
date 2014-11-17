@@ -125,7 +125,7 @@ public class SummaryPanel extends Composite {
 	}
 	
 
-	public void setTotal(int p) {
+	public void setTotal(long p) {
 		progressBar.setTotal(p);
 	}
 	

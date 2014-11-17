@@ -13,7 +13,7 @@ public interface I_TrialRunUi {
 	
 	public void showTestWidget(Object o);
 	
-	public void setTotalTests(int p);
+	public void setTotalTests(long p);
 	
 	public void setRunHandler(I_RunHandler handler);
 
