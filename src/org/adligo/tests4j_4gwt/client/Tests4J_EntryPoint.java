@@ -24,7 +24,7 @@ public class Tests4J_EntryPoint implements EntryPoint {
 		Controller controller = new Controller(view);
 		GwtTests4J_Params params = new GwtTests4J_Params();
 		params.addTrial(new ExampleGwtTrialWrapper());
-		params.setMetaTrial(new ExampleMetaTrial());
+		//params.setMetaTrial(new ExampleMetaTrial());
 		controller.setParams(params);
 	}
 }

@@ -20,8 +20,8 @@ public class ProgressPanel extends Composite {
 	private String widthString;
 	private long passed;
 	private long failed;
-	private final double width_;
-	private final double barWidth_;
+	private double width_;
+	private double barWidth_;
 	
 	public ProgressPanel() {
 		
