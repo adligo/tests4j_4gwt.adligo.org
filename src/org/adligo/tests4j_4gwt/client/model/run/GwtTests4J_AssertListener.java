@@ -1,11 +1,5 @@
 package org.adligo.tests4j_4gwt.client.model.run;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import org.adligo.tests4j.models.shared.results.BaseTrialResult;
 import org.adligo.tests4j.models.shared.results.BaseTrialResultMutant;
 import org.adligo.tests4j.models.shared.results.I_TrialFailure;
@@ -14,22 +8,30 @@ import org.adligo.tests4j.models.shared.results.TestResult;
 import org.adligo.tests4j.models.shared.results.TestResultMutant;
 import org.adligo.tests4j.shared.asserts.common.I_AssertCommand;
 import org.adligo.tests4j.shared.asserts.common.I_AssertListener;
+import org.adligo.tests4j.shared.asserts.common.I_Asserts;
 import org.adligo.tests4j.shared.asserts.common.I_TestFailure;
-import org.adligo.tests4j.shared.asserts.common.TestFailure;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class GwtTests4J_AssertListener implements I_AssertListener {
+  private I_Asserts trialInstance_;
 	private Map<String,BaseTrialResult> trialResults = new HashMap<String, BaseTrialResult>();
 	private BaseTrialResultMutant currentTrial;
 	private TestResultMutant currentTest;
 	private boolean passed = true;
 	
-	public void startNewTrial(I_GwtTrialDescription desc) {
+	public void startNewTrial(I_GwtTrialDescription desc, I_Asserts trialInstance) {
 		if (currentTrial != null) {
 			finishTrial();
 		}
 		currentTrial = new BaseTrialResultMutant();
 		currentTrial.setTrialName(desc.getTrialName());
 		currentTrial.setType(desc.getType());
+		trialInstance_ = trialInstance;
 	}
 
 	public I_TrialResult finishTrial() {
@@ -85,4 +87,9 @@ public class GwtTests4J_AssertListener implements I_AssertListener {
 	public void setPassed(boolean p) {
 		passed = p;
 	}
+
+  @Override
+  public I_Asserts getTrialInstance() {
+    return trialInstance_;
+  }
 }

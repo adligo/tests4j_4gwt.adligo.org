@@ -86,7 +86,7 @@ public class GwtTests4J_Processor implements I_TrialBindings {
 		GwtTrialDescription desc = new GwtTrialDescription();
 		desc.setTrialName(trialName);
 		desc.setType(TrialType.MetaTrial);
-		assertListener.startNewTrial(desc);
+		assertListener.startNewTrial(desc, metaTrial);
 		
 		String testName = "afterMetadataCalculated";
 		metaTrial.setBindings(this);

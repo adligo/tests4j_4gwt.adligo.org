@@ -21,7 +21,7 @@ public class GwtTests4J_TrialRunner {
 	public void run() {
 		String trialName = trial.getClass().getName();
 		listener.onStartingTrial(trialName);
-		assertionListener.startNewTrial(trialWrapper.getDescription());
+		assertionListener.startNewTrial(trialWrapper.getDescription(), trialWrapper.getTrial());
 		I_GwtMethodWrapper beforeTrial = trialWrapper.getBeforeTrial();
 		if (beforeTrial != null) {
 			try {

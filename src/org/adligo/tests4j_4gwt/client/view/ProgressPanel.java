@@ -20,22 +20,29 @@ public class ProgressPanel extends Composite {
 	private String widthString;
 	private long passed;
 	private long failed;
+	private final double width_;
+	private final double barWidth_;
 	
 	public ProgressPanel() {
 		
+	  width_ = Window.getClientWidth();
+	  int widthInt = (int) width_;
+	  
 		flexTable = new FlexTable();
 		flexTable.setStyleName("grey");
 		initWidget(flexTable);
-		flexTable.setSize("100%", "30px");
+		flexTable.setSize(widthInt + "px", "30px");
 		
+		double barWidth_ = width_ * 0.98;
+		int nextWidthInt = (int) barWidth_;
 		progressPanel = new HorizontalPanel();
 		progressPanel.setStyleName("white");
-		progressPanel.setSize("98%", "18px");
+		progressPanel.setSize(nextWidthInt + "px", "18px");
 		flexTable.setWidget(0, 0, progressPanel);
 		
 		
 		flexTable.getCellFormatter().setHeight(0, 0, "20px");
-		flexTable.getCellFormatter().setWidth(0, 0, "98%");
+		flexTable.getCellFormatter().setWidth(0, 0, nextWidthInt + "px");
 		flexTable.getCellFormatter().setHorizontalAlignment(0, 0, HasHorizontalAlignment.ALIGN_CENTER);
 		flexTable.getCellFormatter().setVerticalAlignment(0, 0, HasVerticalAlignment.ALIGN_MIDDLE);
 		
