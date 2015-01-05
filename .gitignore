@@ -1,7 +1,9 @@
-/.gwt-cache
-/gwt-unitCache/
-/.setttings
-/war/tests4j_4gwt/
+/bin/
 /build/
-.gwt
-.settings
+/.gwt-cache/
+/gwt-unitCache/
+/.setttings/
+/war/tests4j_4gwt/
+
+/.gwt/
+/.settings/
