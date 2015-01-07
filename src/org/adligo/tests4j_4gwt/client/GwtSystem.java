@@ -52,4 +52,9 @@ public class GwtSystem implements I_System {
 		return false;
 	}
 
+  @Override
+  public String getCurrentThreadGroupName() {
+    return "UnknownThreadGroup";
+  }
+
 }

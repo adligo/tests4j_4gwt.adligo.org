@@ -89,5 +89,13 @@ public class ConsolePresenter implements I_Tests4J_Log {
 		//its javascript so there is only one main thread
 		return " ";
 	}
+  @Override
+  public String getThreadWithGroupNameMessage() {
+    return SYS.getCurrentThreadGroupName();
+  }
+  @Override
+  public String getThreadMessage() {
+    return SYS.getCurrentThreadName();
+  }
 
 }
