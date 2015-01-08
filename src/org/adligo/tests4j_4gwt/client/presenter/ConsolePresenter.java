@@ -3,12 +3,14 @@ package org.adligo.tests4j_4gwt.client.presenter;
 import org.adligo.tests4j.shared.asserts.line_text.TextLines;
 import org.adligo.tests4j.shared.common.I_System;
 import org.adligo.tests4j.shared.common.StackTraceBuilder;
+import org.adligo.tests4j.shared.output.DefaultLog;
 import org.adligo.tests4j.shared.output.I_Tests4J_Log;
 import org.adligo.tests4j.system.shared.report.summary.DefaultReporterStates;
 import org.adligo.tests4j_4gwt.client.GwtSystem;
 import org.adligo.tests4j_4gwt.client.ui.I_ConsoleUi;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class ConsolePresenter implements I_Tests4J_Log {
@@ -96,6 +98,24 @@ public class ConsolePresenter implements I_Tests4J_Log {
   @Override
   public String getThreadMessage() {
     return SYS.getCurrentThreadName();
+  }
+  @Override
+  public void logLine(String... p) {
+    String result = DefaultLog.orderLine(p);
+    logPrivate(result);
+  }
+  
+  @Override
+  public void appendLine(StringBuilder sb, String line, String indent) {
+    String result = DefaultLog.orderLine(indent, line);
+    sb.append(result);
+  }
+  
+  @Override
+  public void appendLines(StringBuilder sb, List<String> lines, String indent) {
+    for (String line: lines) {
+      appendLine(sb, line, indent);
+    }
   }
 
 }
