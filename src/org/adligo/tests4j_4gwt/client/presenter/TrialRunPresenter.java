@@ -4,6 +4,7 @@ import org.adligo.tests4j.models.shared.metadata.I_TrialRunMetadata;
 import org.adligo.tests4j.models.shared.results.I_PhaseState;
 import org.adligo.tests4j.models.shared.results.I_TrialResult;
 import org.adligo.tests4j.models.shared.results.I_TrialRunResult;
+import org.adligo.tests4j.shared.en.Tests4J_EnglishConstants;
 import org.adligo.tests4j.system.shared.api.I_Tests4J_Listener;
 import org.adligo.tests4j.system.shared.api.I_Tests4J_Params;
 import org.adligo.tests4j.system.shared.report.summary.SummaryReporter;
@@ -47,7 +48,8 @@ public class TrialRunPresenter implements I_RunHandler, I_Tests4J_Listener {
 		console = ui.getConsole();
 		ui.setRunHandler(this);
 		consolePresenter.setUi(console);
-		summaryReporter = new SummaryReporter(consolePresenter);
+		summaryReporter = new SummaryReporter(
+		    Tests4J_EnglishConstants.ENGLISH, consolePresenter);
 	}
 
 	@Override

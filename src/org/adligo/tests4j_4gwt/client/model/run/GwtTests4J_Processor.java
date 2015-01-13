@@ -19,6 +19,8 @@ import org.adligo.tests4j.shared.common.I_System;
 import org.adligo.tests4j.shared.common.Platform;
 import org.adligo.tests4j.shared.common.StackTraceBuilder;
 import org.adligo.tests4j.shared.common.TrialType;
+import org.adligo.tests4j.shared.en.Tests4J_EnglishConstants;
+import org.adligo.tests4j.shared.i18n.I_Tests4J_Constants;
 import org.adligo.tests4j.shared.output.I_Tests4J_Log;
 import org.adligo.tests4j.system.shared.api.I_Tests4J_Listener;
 import org.adligo.tests4j.system.shared.trials.I_MetaTrial;
@@ -31,7 +33,8 @@ import java.util.List;
 public class GwtTests4J_Processor implements I_TrialBindings {
   private static final I_System SYS = new GwtSystem();
 	private GwtTests4J_AssertListener assertListener = new GwtTests4J_AssertListener();
-	private I_EvaluatorLookup evaluatorLookup = EvaluatorLookup.DEFAULT_LOOKUP;
+	private I_Tests4J_Constants constants_ = Tests4J_EnglishConstants.ENGLISH;
+	private I_EvaluatorLookup evaluatorLookup = EvaluatorLookup.getDefault(constants_);
 	private GwtTests4J_TrialRunner runner = new GwtTests4J_TrialRunner();
 	private I_Tests4J_Listener reporter;
 	private I_Tests4J_Log log;
@@ -216,4 +219,8 @@ public class GwtTests4J_Processor implements I_TrialBindings {
 	public void setReporter(I_Tests4J_Listener reporter) {
 		this.reporter = reporter;
 	}
+  @Override
+  public I_Tests4J_Constants getConstants() {
+    return constants_;
+  }
 }

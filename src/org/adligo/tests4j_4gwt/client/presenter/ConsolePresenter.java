@@ -101,13 +101,13 @@ public class ConsolePresenter implements I_Tests4J_Log {
   }
   @Override
   public void logLine(String... p) {
-    String result = DefaultLog.orderLine(p);
+    String result = DefaultLog.orderLine(true, p);
     logPrivate(result);
   }
   
   @Override
   public void appendLine(StringBuilder sb, String line, String indent) {
-    String result = DefaultLog.orderLine(indent, line);
+    String result = DefaultLog.orderLine(true, indent, line);
     sb.append(result);
   }
   

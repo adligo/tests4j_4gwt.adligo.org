@@ -3,7 +3,7 @@ package org.adligo.tests4j_4gwt.client.model.example;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.adligo.tests4j.shared.asserts.common.ExpectedThrownData;
+import org.adligo.tests4j.shared.asserts.common.ExpectedThrowable;
 import org.adligo.tests4j.shared.asserts.common.I_Thrower;
 import org.adligo.tests4j.shared.common.ClassMethods;
 import org.adligo.tests4j.shared.common.Platform;
@@ -67,7 +67,7 @@ public class ExampleGwtTrial extends SourceFileTrial {
 	@Test
 	public void testFromTypeDescription() {
 		
-		assertThrown(new ExpectedThrownData(IllegalArgumentException.class),
+		assertThrown(new ExpectedThrowable(IllegalArgumentException.class),
 				new I_Thrower() {
 					
 					@Override
@@ -75,7 +75,7 @@ public class ExampleGwtTrial extends SourceFileTrial {
 						ClassMethods.fromTypeDescription(null);
 					}
 				});
-		assertThrown(new ExpectedThrownData(IllegalArgumentException.class),
+		assertThrown(new ExpectedThrowable(IllegalArgumentException.class),
 				new I_Thrower() {
 					
 					@Override
