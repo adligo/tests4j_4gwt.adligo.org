@@ -4,7 +4,6 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
     <tns:stages>
         <tns:stage name="jar" />
-        <tns:stage name="gwt-jar" />
         <tns:stage name="gwt-test" />
     </tns:stages>
     <tns:dependencies>

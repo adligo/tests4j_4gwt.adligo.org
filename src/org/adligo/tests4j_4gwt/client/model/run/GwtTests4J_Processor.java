@@ -106,7 +106,7 @@ public class GwtTests4J_Processor implements I_TrialBindings {
 			reporter.onTestCompleted(trialName, testName, false);
 			//the stack is available in dev mode
 			TrialFailure failure = new TrialFailure(testName + " threw a error.",
-					StackTraceBuilder.toString(g, true));
+					new StackTraceBuilder().toString(g, true));
 			assertListener.trialFailed(failure);
 		}
 		
@@ -124,7 +124,7 @@ public class GwtTests4J_Processor implements I_TrialBindings {
 			reporter.onTestCompleted(trialName, testName, false);
 			//the stack is available in dev mode
 			TrialFailure failure = new TrialFailure(testName + " threw a error.",
-					StackTraceBuilder.toString(g, true));
+					new StackTraceBuilder().toString(g, true));
 			assertListener.trialFailed(failure);
 		}
 		I_TrialResult trialResult = assertListener.finishTrial();

@@ -28,7 +28,8 @@ public class GwtTests4J_TrialRunner {
 				beforeTrial.run();
 			} catch (Throwable x) {
 				//the stack is available in dev mode
-				TrialFailure failure = new TrialFailure("beforeTrial threw a error.", StackTraceBuilder.toString(x, true));
+				TrialFailure failure = new TrialFailure("beforeTrial threw a error.", 
+				    new StackTraceBuilder().toString(x, true));
 				assertionListener.trialFailed(failure);
 				return;
 			}
@@ -45,7 +46,8 @@ public class GwtTests4J_TrialRunner {
 					beforeTests.run();
 				} catch (Throwable x) {
 					//the stack is available in dev mode
-					TrialFailure failure = new TrialFailure("beforeTests threw a error.", StackTraceBuilder.toString(x, true));
+					TrialFailure failure = new TrialFailure("beforeTests threw a error.", 
+					    new StackTraceBuilder().toString(x, true));
 					assertionListener.trialFailed(failure);
 					return;
 				}
@@ -58,7 +60,8 @@ public class GwtTests4J_TrialRunner {
 			} catch (Throwable x) {
 				listener.onTestCompleted(trialName, testName, false);
 				//the stack is available in dev mode
-				TrialFailure failure = new TrialFailure(testName + " threw a error.", StackTraceBuilder.toString(x, true));
+				TrialFailure failure = new TrialFailure(testName + " threw a error.", 
+				    new StackTraceBuilder().toString(x, true));
 				assertionListener.trialFailed(failure);
 				return;
 			}
@@ -68,7 +71,8 @@ public class GwtTests4J_TrialRunner {
 					beforeTests.run();
 				} catch (Throwable x) {
 					//the stack is available in dev mode
-					TrialFailure failure = new TrialFailure("beforeTests threw a error.", StackTraceBuilder.toString(x, true));
+					TrialFailure failure = new TrialFailure("beforeTests threw a error.", 
+					    new StackTraceBuilder().toString(x, true));
 					assertionListener.trialFailed(failure);
 					return;
 				}
@@ -79,7 +83,8 @@ public class GwtTests4J_TrialRunner {
 					afterTests.run();
 				} catch (Throwable x) {
 					//the stack is available in dev mode
-					TrialFailure failure = new TrialFailure("afterTests threw a error.", StackTraceBuilder.toString(x, true));
+					TrialFailure failure = new TrialFailure("afterTests threw a error.", 
+					    new StackTraceBuilder().toString(x, true));
 					assertionListener.trialFailed(failure);
 					return;
 				}
@@ -92,7 +97,8 @@ public class GwtTests4J_TrialRunner {
 				afterTrial.run();
 			} catch (Throwable x) {
 				//the stack is available in dev mode
-				TrialFailure failure = new TrialFailure("afterTrial threw a error.", StackTraceBuilder.toString(x, true));
+				TrialFailure failure = new TrialFailure("afterTrial threw a error.", 
+				    new StackTraceBuilder().toString(x, true));
 				assertionListener.trialFailed(failure);
 				return;
 			}

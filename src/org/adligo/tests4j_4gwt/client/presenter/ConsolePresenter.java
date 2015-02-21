@@ -3,7 +3,7 @@ package org.adligo.tests4j_4gwt.client.presenter;
 import org.adligo.tests4j.shared.asserts.line_text.TextLines;
 import org.adligo.tests4j.shared.common.I_System;
 import org.adligo.tests4j.shared.common.StackTraceBuilder;
-import org.adligo.tests4j.shared.output.DefaultLog;
+import org.adligo.tests4j.shared.common.StringMethods;
 import org.adligo.tests4j.shared.output.I_Tests4J_Log;
 import org.adligo.tests4j.system.shared.report.summary.DefaultReporterStates;
 import org.adligo.tests4j_4gwt.client.GwtSystem;
@@ -44,7 +44,7 @@ public class ConsolePresenter implements I_Tests4J_Log {
 	
 	@Override
 	public void onThrowable(Throwable p) {
-		String stack = StackTraceBuilder.toString(p, true);
+		String stack = new StackTraceBuilder().toString(p, true);
 		TextLines lines = new TextLines(stack);
 		for (int i = 0; i < lines.getLines(); i++) {
 			String line = lines.getLine(i);
@@ -67,7 +67,7 @@ public class ConsolePresenter implements I_Tests4J_Log {
 	}
 
 	@Override
-	public String getLineSeperator() {
+	public String lineSeparator() {
 		return SYS.lineSeperator();
 	}
 
@@ -101,13 +101,13 @@ public class ConsolePresenter implements I_Tests4J_Log {
   }
   @Override
   public void logLine(String... p) {
-    String result = DefaultLog.orderLine(true, p);
+    String result = StringMethods.orderLine(true, p);
     logPrivate(result);
   }
   
   @Override
   public void appendLine(StringBuilder sb, String line, String indent) {
-    String result = DefaultLog.orderLine(true, indent, line);
+    String result = StringMethods.orderLine(true, indent, line);
     sb.append(result);
   }
   
