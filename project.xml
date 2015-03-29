@@ -5,6 +5,9 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
     <pns:attributes>
     	<cns:param key="platforms" value="jse,gwt"/>
+    	<cns:param key="ide" value="eclipse">
+    		<cns:param key="output" value="war/WEB-INF/classes"/> 
+    	</cns:param>
    	</pns:attributes>
     <pns:dependencies>
         <lns:library>gwt</lns:library>
