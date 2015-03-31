@@ -11,6 +11,8 @@
    	</pns:attributes>
     <pns:dependencies>
         <lns:library>gwt</lns:library>
+        <lns:library platform="GWT" >gwt-dev</lns:library>
+        <lns:library platform="GWT" >gwt-ide</lns:library>
         <pns:project>tests4j.adligo.org</pns:project>
     </pns:dependencies>
     <pns:stages>
